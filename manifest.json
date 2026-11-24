@@ -1,0 +1,20 @@
+{
+    "package_name": "Track Glow",
+    "id": "com.cp.universe.trackglow4ba7",
+    "title": "Track Glow",
+    "version": "1.0.0",
+    "manufacturer": "CP",
+    "description": "Full-page visualiser: one glowing bar per track in its track colour, driven by the track meters, with a soft peak hold. Built by CP with SDK Controller.",
+    "categories": [
+        "Utility",
+        "Mixing & Mastering"
+    ],
+    "sdk_version": "3.1.2.65",
+    "min_luna_version": "3.1.2",
+    "engines": [
+        "luna"
+    ],
+    "html": "index.html",
+    "target": "app",
+    "icon": "icon.png"
+}

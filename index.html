@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Track Glow</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; overflow: hidden; color: #ccc;
+      font: 12px -apple-system, Helvetica, sans-serif;
+      background: radial-gradient(ellipse at 50% 110%, #1b1d26 0%, #0c0d11 60%, #08080a 100%);
+      display: flex; flex-direction: column;
+    }
+    #status { position: absolute; top: 10px; right: 14px; color: #666; font-size: 11px; pointer-events: none; }
+    #empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #555; font-size: 15px; pointer-events: none; }
+    #bars { flex: 1; display: flex; gap: 0.6vw; padding: 26px 3vw 0; min-height: 0; }
+    .bar { --c: rgb(120,150,200); flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+    .lane { position: relative; flex: 1; overflow: hidden; }
+    .rail { position: absolute; left: 22%; right: 22%; top: 34px; bottom: 0; border-radius: 6px 6px 0 0;
+            background: linear-gradient(to top, color-mix(in srgb, var(--c) 14%, transparent), color-mix(in srgb, var(--c) 4%, transparent)); }
+    .fill, .peak { position: absolute; left: 22%; right: 22%; top: 34px; bottom: 0; transform: translateY(100%); will-change: transform; }
+    .fill { border-radius: 6px 6px 0 0;
+            background: linear-gradient(to top, color-mix(in srgb, var(--c) 70%, #000), var(--c) 55%, color-mix(in srgb, var(--c) 55%, #fff));
+            box-shadow: 0 0 10px 1px var(--c), 0 0 34px 6px color-mix(in srgb, var(--c) 55%, transparent); }
+    .peak { opacity: 0; will-change: transform, opacity; }
+    .peak::before { content: ''; position: absolute; left: -4%; right: -4%; top: -2px; height: 4px; border-radius: 3px;
+                    background: color-mix(in srgb, var(--c) 45%, #fff);
+                    box-shadow: 0 0 8px 2px var(--c), 0 0 22px 4px color-mix(in srgb, var(--c) 50%, transparent); }
+    .floor { height: 2px; margin: 0 14%; background: var(--c); opacity: 0.5; box-shadow: 0 0 12px 2px var(--c); }
+    .name { padding: 10px 2px 16px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #9a9aa3; }
+  </style>
+</head>
+<body>
+  <div id="status">connecting...</div>
+  <div id="empty" hidden>No tracks in this session</div>
+  <main id="bars"></main>
+  <script src="vendor/luna.global.js"></script>
+  <script src="logic.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
